@@ -13,24 +13,48 @@ footer{margin-top:48px;font-size:13px;color:#888}
 </head>
 <body>
 <h1>PawPeek 隱私政策</h1>
-<p><em>最後更新：2026 年 7 月</em></p>
+<p><em>最後更新：2026 年 10 月</em></p>
 
 <h2>核心原則：你的影像不會經過我們</h2>
-<p>PawPeek 是一個「完全本地」的家用攝影機 App。<strong>我們沒有伺服器</strong>，不收集、不儲存、也無法存取你的任何影像、聲音或個人資料。</p>
+<p>PawPeek 是一個「完全本地」的家用攝影機 App。<strong>我們沒有伺服器</strong>，不收集、不儲存、也無法存取你的任何影像、聲音或個人資料。影像只在你自己的裝置之間傳遞。</p>
 
 <h2>相機與麥克風</h2>
 <p>App 使用相機與麥克風來錄影與即時串流。所有影音只會：</p>
 <ul>
 <li>儲存在你裝置的本機空間；</li>
-<li>在你的區域網路（或你自行設定的 VPN）內，以加密連線（HTTPS/WSS/WebRTC）直接傳給你自己的其他裝置；</li>
+<li>以加密連線（HTTPS/WSS/WebRTC，端對端加密）直接傳給你自己配對過的裝置——在家走區域網路，出門在外走你家路由器的直連通道（見下方「出門觀看」）；</li>
 <li>（若你啟用備份）複製到你自己選擇的雲端資料夾（iCloud、Google Drive、OneDrive 等）。該雲端服務由你自己的帳號管理，其隱私政策由該服務提供者規範，App 不經手你的帳號密碼。</li>
 </ul>
 
-<h2>區域網路</h2>
-<p>App 使用區域網路（Bonjour）在同一個 Wi-Fi 內自動找到你的攝影機裝置。此過程不會離開你家的網路。</p>
+<h2>寵物與人員偵測（裝置內運算）</h2>
+<p>App 使用 Apple 內建的視覺與語言模型，<strong>全部在你的裝置上運算</strong>，影像不會為了辨識而傳送到任何地方：</p>
+<ul>
+<li><strong>寵物偵測</strong>（預設開啟）：辨認畫面中的貓狗以自動錄影、產生每日紀錄與影片。</li>
+<li><strong>人員偵測</strong>（預設<strong>關閉</strong>，需自行開啟）：偵測到有人出現時，記錄時間並保存一張快照，可選擇同時自動錄影。<strong>這些快照與影片只存在該台攝影機裝置上，保留 14 天後自動刪除</strong>，不會上傳、不會進入寵物日記或行為統計。若你的攝影機可能拍到家人、訪客或住宅以外的公共區域，開啟前請確認相關人員知情且同意；當地法律對錄影可能另有規範，請自行確認。你可以隨時關閉此功能並刪除已記錄的事件。</li>
+<li><strong>每日紀錄</strong>：以裝置內的語言模型生成文字摘要，同樣不離開裝置。</li>
+</ul>
+
+<h2>網路連線與第三方</h2>
+<p>PawPeek 沒有自己的伺服器，但為了讓兩台裝置找到彼此，會用到下列網路機制：</p>
+<ul>
+<li><strong>區域網路探索（Bonjour）與裝置直連（AWDL）</strong>：在同一個 Wi-Fi 或鄰近裝置之間尋找你的攝影機，不離開你家的網路。</li>
+<li><strong>出門觀看（自動開門 NAT-PMP / UPnP）</strong>：攝影機會請求你家路由器開啟連接埠，讓你在外面時能直接連回家。連線仍是端對端加密、不經任何第三方伺服器。</li>
+<li><strong>STUN（查詢對外位址）</strong>：為了讓外面的裝置知道要連到哪裡，App 會向公開的 STUN 伺服器（目前使用 Google 提供的 stun.l.google.com）查詢你家的對外 IP 位址；WebRTC 在建立連線時也會用它來穿透 NAT。<strong>這個過程只會揭露你的 IP 位址，不包含任何影像、聲音或個人資料</strong>，且該服務由 Google 提供、受其隱私政策規範。</li>
+<li><strong>選用的第三方網路工具</strong>：若你所在的網路無法直連（例如電信商的大樓共用型網路），App 會建議你安裝 Tailscale 這類由你自行選擇、自行註冊的工具。PawPeek 本身<strong>不含任何隧道或連線代理程式碼</strong>，也不經手你在該服務的帳號。是否安裝完全由你決定。</li>
+<li><strong>iCloud 位址信箱與背景提醒（1.3 起，背景提醒可關閉）</strong>：攝影機會把「目前的連線位址」加密後放進 Apple iCloud 的公用資料庫，讓你在外面時找得到它；若你在觀看端打開「App 沒開也提醒」，攝影機也會把「看到毛孩」的事件（含一張縮圖）加密後放進同一處，由 Apple 推播到你的手機。內容以只有你配對過的裝置才有的金鑰加密，Apple 與我們都讀不到，只看得到一串雜湊名稱與寫入時間；事件 24 小時後自動刪除。<strong>影像與聲音仍然只在你的裝置之間點對點傳遞，不經任何伺服器。</strong>需要攝影機那台登入 iCloud；不開背景提醒時，只有加密的位址會經過 iCloud。</li>
+</ul>
+
+<h2>裝置配對與加密</h2>
+<p>裝置之間以掃描 QR Code 或六位配對碼建立信任，憑證由裝置自行產生、金鑰存放於系統 Keychain。所有連線均驗證憑證指紋，確保你連到的是自己的攝影機。</p>
+
+<p><strong>觀看端的攝影機清單（可關閉）</strong> — 你在這支手機上配對過哪幾台攝影機、以及對應的信任權杖，會存進系統 Keychain，<strong>預設只留在這台裝置上</strong>。你可以在觀看端的設定中開啟同步，開啟後這份清單會跟著<strong>你自己的</strong> iCloud 鑰匙圈到你用同一個 Apple ID 登入的其他裝置，換手機或重新安裝時就不必再掃一次 QR Code。同步的只有這份清單與權杖，<strong>影像、錄影、行為記錄與日記永遠不會過去</strong>。iCloud 鑰匙圈由 Apple 端到端加密，我們沒有伺服器、也讀不到其中任何內容。<br>
+持有信任權杖等同於可以觀看該攝影機的即時影像與錄影，因此一旦開啟同步，這一項就無法再使用「僅限本機」的儲存層級，會一併進入你裝置的加密備份。維持預設（關閉）的話，這份資料只留在本機，換裝置時需要重新掃描 QR Code。</p>
 
 <h2>資料收集</h2>
-<p>本 App <strong>不含</strong>任何分析工具、廣告 SDK 或第三方追蹤。我們不收集任何資料。</p>
+<p>本 App <strong>不含</strong>任何分析工具、廣告 SDK 或第三方追蹤，不建立帳號，不收集任何資料。App 內的診斷記錄只存在你自己的裝置上，除非你主動匯出寄給我們。</p>
+
+<h2>支援的平台</h2>
+<p>本政策適用於 PawPeek 的 iPhone、iPad 與 Mac 版本。</p>
 
 <h2>聯絡</h2>
 <p>隱私相關問題請來信：<a href="mailto:chen.shih.tsung@hotmail.com">chen.shih.tsung@hotmail.com</a></p>
@@ -38,11 +62,36 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <hr>
 <div class="en">
 <h1>PawPeek Privacy Policy (English)</h1>
-<p><em>Last updated: July 2026</em></p>
-<p><strong>Your footage never passes through us.</strong> PawPeek is a fully local home-camera app. We operate no servers and do not collect, store, or have access to any of your video, audio, or personal data.</p>
-<p><strong>Camera &amp; Microphone</strong> — used solely for recording and live streaming. All media stays on your device, travels only within your local network (or your own VPN) over encrypted connections (HTTPS/WSS/WebRTC) directly to your own devices, or — if you enable backup — is copied to a cloud folder you choose (iCloud, Google Drive, OneDrive, etc.), governed by that provider's privacy policy. The app never handles your cloud credentials.</p>
-<p><strong>Local Network (Bonjour)</strong> — used only to discover your camera devices on the same Wi-Fi. Nothing leaves your home network.</p>
-<p><strong>Data Collection</strong> — none. No analytics, no ads, no trackers.</p>
+<p><em>Last updated: October 2026</em></p>
+<p><strong>Your footage never passes through us.</strong> PawPeek is a fully local home-camera app. We operate no servers and do not collect, store, or have access to any of your video, audio, or personal data. Video travels only between your own devices.</p>
+
+<p><strong>Camera &amp; Microphone</strong> — used solely for recording and live streaming. All media stays on your device, travels over end-to-end encrypted connections (HTTPS/WSS/WebRTC) directly to your own paired devices — over your local network at home, or through your own router's direct connection when you are away (see "Networking" below) — or, if you enable backup, is copied to a cloud folder you choose (iCloud, Google Drive, OneDrive, etc.), governed by that provider's privacy policy. The app never handles your cloud credentials.</p>
+
+<p><strong>Pet &amp; Person Detection (on-device)</strong> — PawPeek uses Apple's built-in vision and language models, running <strong>entirely on your device</strong>. No image is ever sent anywhere for recognition.</p>
+<ul>
+<li><em>Pet detection</em> (on by default): recognises cats and dogs to trigger recording and build your daily recap.</li>
+<li><em>Person detection</em> (<strong>off by default</strong>, opt-in): when a person is detected, the app logs the time and saves one snapshot, and can optionally record video. <strong>These snapshots and clips stay on that camera device only and are deleted automatically after 14 days.</strong> They are never uploaded and never appear in pet diaries or behaviour statistics. If your camera may capture family members, visitors, or areas outside your home, please make sure they are informed and consent before enabling it; local laws on recording may also apply. You can turn the feature off and delete recorded events at any time.</li>
+<li><em>Daily recap</em>: generated by an on-device language model; the text never leaves the device.</li>
+</ul>
+
+<p><strong>Networking &amp; third parties</strong> — PawPeek runs no servers of its own, but uses the following to let your devices find each other:</p>
+<ul>
+<li><em>Local discovery (Bonjour) and peer-to-peer Wi-Fi (AWDL)</em> — finds your cameras on the same network or nearby. Nothing leaves your home network.</li>
+<li><em>Away-from-home access (NAT-PMP / UPnP)</em> — the camera asks your own router to open a port so you can connect back home directly. The connection remains end-to-end encrypted and passes through no third-party server.</li>
+<li><em>STUN (public address lookup)</em> — to let a remote device know where to connect, the app queries a public STUN server (currently Google's stun.l.google.com) for your home's public IP address; WebRTC also uses it for NAT traversal. <strong>This reveals only your IP address — never video, audio, or personal data</strong> — and that service is operated by Google under its own privacy policy.</li>
+<li><em>Optional third-party networking tools</em> — if your network cannot accept direct connections (for example, carrier-grade NAT), the app may suggest installing a tool such as Tailscale, which you choose and register for yourself. PawPeek itself contains <strong>no tunnelling or proxy code</strong> and never handles your account with such a service. Installing it is entirely your choice.</li>
+<li><em>iCloud address mailbox and background alerts (from 1.3; background alerts can be turned off)</em> — the camera encrypts its current connection address and places it in Apple's iCloud public database, so you can find it when you are away. If you turn on "Alert even when the app is closed" on a viewer, the camera also encrypts "pet spotted" events (with one thumbnail) and places them in the same database, and Apple pushes them to your phone. The contents are encrypted with a key that only your paired devices hold — neither Apple nor we can read them; all that is visible is a hashed name and the time of writing. Events are deleted automatically after 24 hours. <strong>Video and audio still travel only peer-to-peer between your own devices and never go through any server.</strong> The camera device must be signed in to iCloud; with background alerts off, only the encrypted address goes through iCloud.</li>
+</ul>
+
+<p><strong>Pairing &amp; encryption</strong> — devices establish trust by scanning a QR code or entering a six-digit code. Certificates are generated on the device itself and keys are stored in the system Keychain. Every connection verifies the certificate fingerprint, so you always reach your own camera.</p>
+
+<p><strong>Your list of paired cameras (can be turned off)</strong> — which cameras this phone has paired with, and the matching trust tokens, are stored in the system Keychain and <strong>stay on this device by default</strong>. You can turn on syncing in the viewer's settings; once on, the list follows <strong>your own</strong> iCloud Keychain to the other devices signed into the same Apple ID, so a new phone or a reinstall does not need the QR code again. Only that list and those tokens sync — <strong>video, recordings, behaviour data and diaries never do</strong>. iCloud Keychain is end-to-end encrypted by Apple; we run no server and cannot read any of it.<br>
+Holding a trust token is equivalent to being able to watch that camera's live view and recordings, so once syncing is on, this item can no longer use the "this device only" storage class and will also be included in your device's encrypted backup. Left at the default (off), the data stays on that device only and a new device needs the QR code again.</p>
+
+<p><strong>Data Collection</strong> — none. No analytics, no ads, no trackers, no accounts. Diagnostic logs stay on your device unless you choose to export and send them to us.</p>
+
+<p><strong>Platforms</strong> — this policy covers PawPeek on iPhone, iPad and Mac.</p>
+
 <p>Contact: <a href="mailto:chen.shih.tsung@hotmail.com">chen.shih.tsung@hotmail.com</a></p>
 </div>
 
