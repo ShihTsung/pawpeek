@@ -19,7 +19,7 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <p>PawPeek 是一個「完全本地」的家用攝影機 App。<strong>我們沒有伺服器</strong>，不收集、不儲存、也無法存取你的任何影像、聲音或個人資料。影像只在你自己的裝置之間傳遞。</p>
 
 <h2>相機與麥克風</h2>
-<p>App 使用相機與麥克風來錄影與即時串流。所有影音只會：</p>
+<p>App 使用相機與麥克風來錄影、即時串流與對講；觀看端錄「叫牠」的聲音時也會用到麥克風；攝影機端會在裝置上辨識煙霧警報等聲音（辨識用的聲音不錄、不存、不傳，見下方「聲音偵測」）。所有影音只會：</p>
 <ul>
 <li>儲存在你裝置的本機空間；</li>
 <li>以加密連線（HTTPS/WSS/WebRTC，端對端加密）直接傳給你自己配對過的裝置——在家走區域網路，出門在外走你家路由器的直連通道（見下方「出門觀看」）；</li>
@@ -41,7 +41,16 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <li><strong>出門觀看（自動開門 NAT-PMP / UPnP）</strong>：攝影機會請求你家路由器開啟連接埠，讓你在外面時能直接連回家。連線仍是端對端加密、不經任何第三方伺服器。</li>
 <li><strong>STUN（查詢對外位址）</strong>：為了讓外面的裝置知道要連到哪裡，App 會向公開的 STUN 伺服器（目前使用 Google 提供的 stun.l.google.com）查詢你家的對外 IP 位址；WebRTC 在建立連線時也會用它來穿透 NAT。<strong>這個過程只會揭露你的 IP 位址，不包含任何影像、聲音或個人資料</strong>，且該服務由 Google 提供、受其隱私政策規範。</li>
 <li><strong>選用的第三方網路工具</strong>：若你所在的網路無法直連（例如電信商的大樓共用型網路），App 會建議你安裝 Tailscale 這類由你自行選擇、自行註冊的工具。PawPeek 本身<strong>不含任何隧道或連線代理程式碼</strong>，也不經手你在該服務的帳號。是否安裝完全由你決定。</li>
-<li><strong>iCloud 位址信箱與背景提醒（1.3 起，背景提醒可關閉）</strong>：攝影機會把「目前的連線位址」加密後放進 Apple iCloud 的公用資料庫，讓你在外面時找得到它；若你在觀看端打開「App 沒開也提醒」，攝影機也會把「看到毛孩」的事件（含一張縮圖）加密後放進同一處，由 Apple 推播到你的手機。內容以只有你配對過的裝置才有的金鑰加密，Apple 與我們都讀不到，只看得到一串雜湊名稱與寫入時間；事件 24 小時後自動刪除。<strong>影像與聲音仍然只在你的裝置之間點對點傳遞，不經任何伺服器。</strong>需要攝影機那台登入 iCloud；不開背景提醒時，只有加密的位址會經過 iCloud。</li>
+<li><strong>iCloud 位址信箱與背景提醒（1.3 起，背景提醒可關閉）</strong>：攝影機會把「目前的連線位址」加密後放進 Apple iCloud 的公用資料庫，讓你在外面時找得到它；若你在觀看端打開「App 沒開也提醒」，攝影機也會把「看到毛孩」的事件（含一張縮圖）與「聽到的聲音種類」（只有種類，例如「煙霧警報」，沒有聲音、沒有縮圖）加密後放進同一處，由 Apple 推播到你的手機。內容以只有你配對過的裝置才有的金鑰加密，Apple 與我們都讀不到，只看得到一串雜湊名稱與寫入時間；事件 24 小時後自動刪除。<strong>影像與聲音仍然只在你的裝置之間點對點傳遞，不經任何伺服器。</strong>需要攝影機那台登入 iCloud；不開背景提醒時，只有加密的位址會經過 iCloud。</li>
+</ul>
+
+<h2>聲音偵測、小工具、App 鎖與「叫牠」（1.5 起）</h2>
+<ul>
+<li><strong>聲音偵測</strong>：攝影機那台用 Apple 內建、在裝置上運算的聲音辨識，判斷煙霧警報、玻璃破碎、貓叫或狗叫。<strong>辨識用的聲音不會被錄下、儲存或傳出</strong>，送到你手機的只有「聽到什麼」。可以在攝影機設定裡關閉。這是輔助提醒，不能取代煙霧偵測器、保全或消防通報。</li>
+<li><strong>小工具</strong>：主畫面小工具顯示的「上次看到毛孩的時間與照片」，存在你這支手機裡 App 與小工具共用的資料夾，不會離開這支手機。</li>
+<li><strong>App 鎖</strong>：Face ID / Touch ID 由 iOS 處理，PawPeek 只收到「驗證成功或失敗」，拿不到任何生物特徵資料。</li>
+<li><strong>叫牠</strong>：你錄的那句話存在你的手機，按下 📣 時以端對端加密連線直接送到你自己的攝影機播放，不經任何伺服器。</li>
+<li><strong>每週精華卡</strong>：統計數字由你的攝影機直接傳給你的手機，卡片在手機上產生；要不要分享、分享到哪裡由你決定。</li>
 </ul>
 
 <h2>裝置配對與加密</h2>
@@ -65,7 +74,7 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <p><em>Last updated: October 2026</em></p>
 <p><strong>Your footage never passes through us.</strong> PawPeek is a fully local home-camera app. We operate no servers and do not collect, store, or have access to any of your video, audio, or personal data. Video travels only between your own devices.</p>
 
-<p><strong>Camera &amp; Microphone</strong> — used solely for recording and live streaming. All media stays on your device, travels over end-to-end encrypted connections (HTTPS/WSS/WebRTC) directly to your own paired devices — over your local network at home, or through your own router's direct connection when you are away (see "Networking" below) — or, if you enable backup, is copied to a cloud folder you choose (iCloud, Google Drive, OneDrive, etc.), governed by that provider's privacy policy. The app never handles your cloud credentials.</p>
+<p><strong>Camera &amp; Microphone</strong> — used for recording, live streaming and talking to your pet; the viewer also uses the microphone when you record a "Call Your Pet" clip, and the camera recognizes sounds such as smoke alarms on the device (the audio used for recognition is never recorded, stored or sent — see "Sound detection" below). All media stays on your device, travels over end-to-end encrypted connections (HTTPS/WSS/WebRTC) directly to your own paired devices — over your local network at home, or through your own router's direct connection when you are away (see "Networking" below) — or, if you enable backup, is copied to a cloud folder you choose (iCloud, Google Drive, OneDrive, etc.), governed by that provider's privacy policy. The app never handles your cloud credentials.</p>
 
 <p><strong>Pet &amp; Person Detection (on-device)</strong> — PawPeek uses Apple's built-in vision and language models, running <strong>entirely on your device</strong>. No image is ever sent anywhere for recognition.</p>
 <ul>
@@ -80,7 +89,16 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <li><em>Away-from-home access (NAT-PMP / UPnP)</em> — the camera asks your own router to open a port so you can connect back home directly. The connection remains end-to-end encrypted and passes through no third-party server.</li>
 <li><em>STUN (public address lookup)</em> — to let a remote device know where to connect, the app queries a public STUN server (currently Google's stun.l.google.com) for your home's public IP address; WebRTC also uses it for NAT traversal. <strong>This reveals only your IP address — never video, audio, or personal data</strong> — and that service is operated by Google under its own privacy policy.</li>
 <li><em>Optional third-party networking tools</em> — if your network cannot accept direct connections (for example, carrier-grade NAT), the app may suggest installing a tool such as Tailscale, which you choose and register for yourself. PawPeek itself contains <strong>no tunnelling or proxy code</strong> and never handles your account with such a service. Installing it is entirely your choice.</li>
-<li><em>iCloud address mailbox and background alerts (from 1.3; background alerts can be turned off)</em> — the camera encrypts its current connection address and places it in Apple's iCloud public database, so you can find it when you are away. If you turn on "Alert even when the app is closed" on a viewer, the camera also encrypts "pet spotted" events (with one thumbnail) and places them in the same database, and Apple pushes them to your phone. The contents are encrypted with a key that only your paired devices hold — neither Apple nor we can read them; all that is visible is a hashed name and the time of writing. Events are deleted automatically after 24 hours. <strong>Video and audio still travel only peer-to-peer between your own devices and never go through any server.</strong> The camera device must be signed in to iCloud; with background alerts off, only the encrypted address goes through iCloud.</li>
+<li><em>iCloud address mailbox and background alerts (from 1.3; background alerts can be turned off)</em> — the camera encrypts its current connection address and places it in Apple's iCloud public database, so you can find it when you are away. If you turn on "Alert even when the app is closed" on a viewer, the camera also encrypts "pet spotted" events (with one thumbnail) and "sound heard" events (only the kind of sound, such as "smoke alarm" — no audio and no thumbnail) and places them in the same database, and Apple pushes them to your phone. The contents are encrypted with a key that only your paired devices hold — neither Apple nor we can read them; all that is visible is a hashed name and the time of writing. Events are deleted automatically after 24 hours. <strong>Video and audio still travel only peer-to-peer between your own devices and never go through any server.</strong> The camera device must be signed in to iCloud; with background alerts off, only the encrypted address goes through iCloud.</li>
+</ul>
+
+<p><strong>Sound detection, widgets, App Lock and Call Your Pet (from 1.5)</strong></p>
+<ul>
+<li><em>Sound detection</em> — the camera device uses Apple's built-in, on-device sound recognition to detect smoke alarms, breaking glass, meowing or barking. <strong>The audio used for recognition is never recorded, stored or sent</strong>; your phone receives only what was heard. You can turn it off in the camera's settings. It is a convenience, not a replacement for a smoke detector, security system or fire alarm service.</li>
+<li><em>Widgets</em> — the time and photo of the last pet sighting shown in the Home Screen widget are stored in a folder shared by the app and its widget on your phone, and never leave that phone.</li>
+<li><em>App Lock</em> — Face ID / Touch ID is handled by iOS; PawPeek only learns whether authentication succeeded and never receives any biometric data.</li>
+<li><em>Call Your Pet</em> — the clip you record is stored on your phone and, when you tap 📣, is sent over an end-to-end encrypted connection directly to your own camera to play, never through any server.</li>
+<li><em>Weekly highlights card</em> — the statistics are sent directly from your cameras to your phone and the card is made on your phone; whether and where to share it is up to you.</li>
 </ul>
 
 <p><strong>Pairing &amp; encryption</strong> — devices establish trust by scanning a QR code or entering a six-digit code. Certificates are generated on the device itself and keys are stored in the system Keychain. Every connection verifies the certificate fingerprint, so you always reach your own camera.</p>
