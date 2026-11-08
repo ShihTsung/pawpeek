@@ -13,7 +13,7 @@ footer{margin-top:48px;font-size:13px;color:#888}
 </head>
 <body>
 <h1>PawPeek 隱私政策</h1>
-<p><em>最後更新：2026 年 10 月</em></p>
+<p><em>最後更新：2026 年 11 月</em></p>
 
 <h2>核心原則：你的影像不會經過我們</h2>
 <p>PawPeek 是一個「完全本地」的家用攝影機 App。<strong>我們沒有伺服器</strong>，不收集、不儲存、也無法存取你的任何影像、聲音或個人資料。影像只在你自己的裝置之間傳遞。</p>
@@ -53,6 +53,13 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <li><strong>每週精華卡</strong>：統計數字由你的攝影機直接傳給你的手機，卡片在手機上產生；要不要分享、分享到哪裡由你決定。</li>
 </ul>
 
+<h2>作息觀察與桌面小工具（1.6 起）</h2>
+<ul>
+<li><strong>作息觀察</strong>：攝影機那台會記下毛孩在畫面中的<strong>位置</strong>（座標數字，不是影像），存在攝影機那台 120 天，不進 iCloud 備份；你確認的地點也只存在攝影機那台。你在觀看端打開「作息觀察」時，攝影機傳來次數統計和一張目前畫面的小圖，以端對端加密連線直接傳送，不經任何伺服器。開了背景提醒時，作息變化提醒走上面說的 iCloud 加密信箱，裡面只有地點種類與次數，沒有影像。這是輔助觀察，不能取代獸醫。</li>
+<li><strong>Mac 桌面小工具</strong>：顯示的「上次看到毛孩的時間與照片」，存在你這台 Mac 裡 App 與小工具共用的資料夾，不會離開這台 Mac。</li>
+<li><strong>評分邀請</strong>：為了同一個人只被問一次，「已經問過」的時間記號會存進你自己的 iCloud 鍵值儲存，跟著你的 Apple ID 同步；裡面沒有其他內容。</li>
+</ul>
+
 <h2>裝置配對與加密</h2>
 <p>裝置之間以掃描 QR Code 或六位配對碼建立信任，憑證由裝置自行產生、金鑰存放於系統 Keychain。所有連線均驗證憑證指紋，確保你連到的是自己的攝影機。</p>
 
@@ -71,7 +78,7 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <hr>
 <div class="en">
 <h1>PawPeek Privacy Policy (English)</h1>
-<p><em>Last updated: October 2026</em></p>
+<p><em>Last updated: November 2026</em></p>
 <p><strong>Your footage never passes through us.</strong> PawPeek is a fully local home-camera app. We operate no servers and do not collect, store, or have access to any of your video, audio, or personal data. Video travels only between your own devices.</p>
 
 <p><strong>Camera &amp; Microphone</strong> — used for recording, live streaming and talking to your pet; the viewer also uses the microphone when you record a "Call Your Pet" clip, and the camera recognizes sounds such as smoke alarms on the device (the audio used for recognition is never recorded, stored or sent — see "Sound detection" below). All media stays on your device, travels over end-to-end encrypted connections (HTTPS/WSS/WebRTC) directly to your own paired devices — over your local network at home, or through your own router's direct connection when you are away (see "Networking" below) — or, if you enable backup, is copied to a cloud folder you choose (iCloud, Google Drive, OneDrive, etc.), governed by that provider's privacy policy. The app never handles your cloud credentials.</p>
@@ -99,6 +106,13 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <li><em>App Lock</em> — Face ID / Touch ID is handled by iOS; PawPeek only learns whether authentication succeeded and never receives any biometric data.</li>
 <li><em>Call Your Pet</em> — the clip you record is stored on your phone and, when you tap 📣, is sent over an end-to-end encrypted connection directly to your own camera to play, never through any server.</li>
 <li><em>Weekly highlights card</em> — the statistics are sent directly from your cameras to your phone and the card is made on your phone; whether and where to share it is up to you.</li>
+</ul>
+
+<p><strong>Routine Watch and the Mac desktop widget (from 1.6)</strong></p>
+<ul>
+<li><em>Routine Watch</em> — the camera device records <strong>where</strong> your pet is in the frame (coordinates, not images) and keeps them on that device for 120 days, excluded from iCloud backup; the spots you confirm are also stored only on the camera device. When you open Routine Watch, the camera sends visit counts and a small image of its current view over an end-to-end encrypted connection, never through any server. If background alerts are on, routine-change alerts use the encrypted iCloud mailbox described above and contain only the kind of spot and the counts, no images. It is an observation aid, not a substitute for a vet.</li>
+<li><em>Mac desktop widget</em> — the time and photo of the last pet sighting are stored in a folder shared by the app and its widget on your Mac, and never leave that Mac.</li>
+<li><em>Rating request</em> — so that you are only asked once, the time you were asked is stored in your own iCloud key-value storage and syncs with your Apple ID; it contains nothing else.</li>
 </ul>
 
 <p><strong>Pairing &amp; encryption</strong> — devices establish trust by scanning a QR code or entering a six-digit code. Certificates are generated on the device itself and keys are stored in the system Keychain. Every connection verifies the certificate fingerprint, so you always reach your own camera.</p>
