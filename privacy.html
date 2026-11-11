@@ -60,6 +60,14 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <li><strong>評分邀請</strong>：為了同一個人只被問一次，「已經問過」的時間記號會存進你自己的 iCloud 鍵值儲存，跟著你的 Apple ID 同步；裡面沒有其他內容。</li>
 </ul>
 
+<h2>毛孩的今天與今日卡（1.7 起）</h2>
+<ul>
+<li><strong>今日計數</strong>：出現幾次、叫了幾回這類數字存在攝影機那台，最多留一年。你在觀看端打開「毛孩的今天」時，攝影機只傳數字過來，走端對端加密連線，不經任何伺服器。</li>
+<li><strong>今天最好的一張</strong>：毛孩出現或看鏡頭時，攝影機會另存一張小圖，並在裝置上用 Apple 內建的模型評分。每天最多留 10 張，換日就刪，不進 iCloud 備份。觀看端要做卡片時，攝影機只傳一張過來，同樣點對點加密。</li>
+<li><strong>今日卡分享</strong>：卡片在你的手機上產生，裡面沒有拍攝位置資訊；要不要分享、分享到哪裡由你決定。分享前會在手機上自動把照片裡的人模糊（預設開，可以關）；模糊失敗時不會讓你帶著那張照片分享，可以改成不放照片。</li>
+<li><strong>存相簿記錄</strong>：為了讓縮時、精華、一日回顧不在相簿裡重複，存進相簿後會在你自己的 iCloud 鍵值儲存記一筆，跟著你的 Apple ID 同步，14 天後刪除。裡面只有檔名加檔案大小算出的一串雜湊和時間，沒有影像。「別台已存過就不再存」打開時，觀看端才會用它來跳過。</li>
+</ul>
+
 <h2>裝置配對與加密</h2>
 <p>裝置之間以掃描 QR Code 或六位配對碼建立信任，憑證由裝置自行產生、金鑰存放於系統 Keychain。所有連線均驗證憑證指紋，確保你連到的是自己的攝影機。</p>
 
@@ -113,6 +121,14 @@ footer{margin-top:48px;font-size:13px;color:#888}
 <li><em>Routine Watch</em> — the camera device records <strong>where</strong> your pet is in the frame (coordinates, not images) and keeps them on that device for 120 days, excluded from iCloud backup; the spots you confirm are also stored only on the camera device. When you open Routine Watch, the camera sends visit counts and a small image of its current view over an end-to-end encrypted connection, never through any server. If background alerts are on, routine-change alerts use the encrypted iCloud mailbox described above and contain only the kind of spot and the counts, no images. It is an observation aid, not a substitute for a vet.</li>
 <li><em>Mac desktop widget</em> — the time and photo of the last pet sighting are stored in a folder shared by the app and its widget on your Mac, and never leave that Mac.</li>
 <li><em>Rating request</em> — so that you are only asked once, the time you were asked is stored in your own iCloud key-value storage and syncs with your Apple ID; it contains nothing else.</li>
+</ul>
+
+<p><strong>Your Pet's Day and today's card (from 1.7)</strong></p>
+<ul>
+<li><em>Today counts</em> — numbers such as how many times your pet appeared or meowed are stored on the camera device for up to one year. When you open "Your Pet's Day" on a viewer, the camera sends only the numbers, over an end-to-end encrypted connection, never through any server.</li>
+<li><em>Today's best shot</em> — when your pet appears or looks at the camera, the camera saves an extra small image and scores it on the device with Apple's built-in model. At most 10 are kept per day; they are deleted when the day changes and are excluded from iCloud backup. When a viewer makes a card, the camera sends just one image, peer-to-peer and encrypted.</li>
+<li><em>Sharing today's card</em> — the card is created on your phone and contains no location data; whether and where to share it is up to you. Before sharing, people in the photo are blurred automatically on your phone (on by default, can be turned off); if blurring fails, the app will not let you share that photo and you can share the card without it.</li>
+<li><em>Saved-to-Photos record</em> — to keep time-lapses, highlights and daily recaps from appearing twice in Photos, an entry is written to your own iCloud key-value storage after a save; it syncs with your Apple ID and is deleted after 14 days. It contains only a hash of the file name and size plus a time, no images. Viewers use it to skip a download only when "Skip if another device saved it" is turned on.</li>
 </ul>
 
 <p><strong>Pairing &amp; encryption</strong> — devices establish trust by scanning a QR code or entering a six-digit code. Certificates are generated on the device itself and keys are stored in the system Keychain. Every connection verifies the certificate fingerprint, so you always reach your own camera.</p>
